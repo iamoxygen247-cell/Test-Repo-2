@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Enter Name</title>
+</head>
+<body>
+	<label for="nameInput">Your name:</label>
+	<input id="nameInput" type="text" placeholder="Enter your name">
+	<button id="saveBtn">Save</button>
+
+	<p id="output"></p>
+
+	<script>
+		const input = document.getElementById('nameInput');
+		const btn = document.getElementById('saveBtn');
+		const out = document.getElementById('output');
+
+		btn.addEventListener('click', () => {
+			const name = input.value.trim();
+			if (!name) {
+				out.textContent = 'Please enter a name.';
+				return;
+			}
+			out.textContent = `Saved name: ${name}`;
+		});
+	</script>
+</body>
+</html>
