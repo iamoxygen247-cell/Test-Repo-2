@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/^[[:space:]]*<div class=\"form-section\">/\\\\t\\\\t\\\\t\\\\t\\\\t<div class=\"form-section\">/' \"c:\\\\Users\\\\georg\\\\Projects\\\\Learn\\\\Test-Repo\\\\main.html\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\georg\\Projects\\Learn\\Test-Repo"
+    ]
+  }
+}
