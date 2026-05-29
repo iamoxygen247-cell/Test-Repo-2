@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "html_file_created",
+      "passed": true,
+      "evidence": "File size: 12346 bytes"
+    },
+    {
+      "text": "brand_color_applied",
+      "passed": true,
+      "evidence": "Found #6C47FF"
+    },
+    {
+      "text": "product_name_present",
+      "passed": true,
+      "evidence": "'Quill' found"
+    },
+    {
+      "text": "waitlist_cta_present",
+      "passed": true,
+      "evidence": "Waitlist/join CTA found"
+    },
+    {
+      "text": "has_sticky_nav",
+      "passed": true,
+      "evidence": "position:sticky found"
+    },
+    {
+      "text": "has_scroll_animations",
+      "passed": true,
+      "evidence": "IntersectionObserver/fade-in found"
+    },
+    {
+      "text": "is_self_contained",
+      "passed": true,
+      "evidence": "No external CDN scripts"
+    },
+    {
+      "text": "has_responsive_breakpoints",
+      "passed": true,
+      "evidence": "@media queries found"
+    },
+    {
+      "text": "has_all_three_features",
+      "passed": true,
+      "evidence": "3/3 feature groups found"
+    },
+    {
+      "text": "has_pill_buttons",
+      "passed": true,
+      "evidence": "980px radius found (pill buttons)"
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 0,
+    "total": 10,
+    "pass_rate": 1.0
+  }
+}

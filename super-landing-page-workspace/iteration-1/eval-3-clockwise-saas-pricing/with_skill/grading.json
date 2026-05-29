@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "html_file_created",
+      "passed": true,
+      "evidence": "File size: 48729 bytes"
+    },
+    {
+      "text": "product_name_present",
+      "passed": true,
+      "evidence": "'Clockwise' found"
+    },
+    {
+      "text": "dark_mode_applied",
+      "passed": true,
+      "evidence": "Dark background color found"
+    },
+    {
+      "text": "has_pricing_section",
+      "passed": true,
+      "evidence": "Free:True, $12:True, $49:True"
+    },
+    {
+      "text": "has_all_four_features",
+      "passed": true,
+      "evidence": "4/4 features: AI time capture:\u2713, reports/digest:\u2713, integrations:\u2713, dashboard:\u2713"
+    },
+    {
+      "text": "has_sticky_nav",
+      "passed": true,
+      "evidence": "position:sticky found"
+    },
+    {
+      "text": "has_scroll_animations",
+      "passed": true,
+      "evidence": "IntersectionObserver/fade-in found"
+    },
+    {
+      "text": "has_responsive_breakpoints",
+      "passed": true,
+      "evidence": "@media queries found"
+    },
+    {
+      "text": "recommended_plan_highlighted",
+      "passed": true,
+      "evidence": "Recommended plan marker found"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  }
+}
