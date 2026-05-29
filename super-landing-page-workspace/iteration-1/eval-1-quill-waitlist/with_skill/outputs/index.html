@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quill — Investor Updates, 10x Faster</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#6C47FF;
+  --accent-h:#7c5cff;
+  --bg:#ffffff;
+  --text:#1d1d1f;
+  --text-2:#6e6e73;
+  --surface:#f5f5f7;
+  --border:rgba(0,0,0,0.08);
+  --r-card:18px;
+  --r-btn:980px;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;font-size:17px;line-height:1.65}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:rgba(255,255,255,0.85);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.02em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:15px;color:var(--text-2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.btn-nav{background:var(--accent);color:#fff;border-radius:var(--r-btn);padding:8px 18px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s}
+.btn-nav:hover{background:var(--accent-h);color:#fff}
+
+/* BUTTONS */
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;border-radius:var(--r-btn);padding:14px 28px;font-size:17px;font-weight:400;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--accent-h);transform:translateY(-1px)}
+.btn-secondary{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);border-radius:var(--r-btn);padding:13px 28px;font-size:17px;background:transparent;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-secondary:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px}
+.hero-inner{max-width:1080px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.eyebrow{display:inline-block;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:20px}
+.hero h1{font-size:clamp(48px,6vw,80px);font-weight:700;letter-spacing:-.035em;line-height:1.06;color:var(--text);margin-bottom:22px}
+.hero p{font-size:19px;color:var(--text-2);line-height:1.65;margin-bottom:40px;max-width:460px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+
+/* WAITLIST FORM */
+.waitlist-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.waitlist-form input{flex:1;min-width:220px;padding:14px 20px;border-radius:var(--r-btn);border:1.5px solid var(--border);font-size:16px;font-family:inherit;outline:none;transition:border-color .2s;background:#fff}
+.waitlist-form input:focus{border-color:var(--accent)}
+.waitlist-form button{background:var(--accent);color:#fff;border-radius:var(--r-btn);padding:14px 24px;font-size:16px;border:none;cursor:pointer;font-family:inherit;font-weight:500;white-space:nowrap;transition:background .2s}
+.waitlist-form button:hover{background:var(--accent-h)}
+
+/* HERO VISUAL */
+.hero-visual{position:relative}
+.hero-img{width:100%;aspect-ratio:4/3;border-radius:var(--r-card);background:linear-gradient(135deg,#1a0533 0%,#3d1f7a 40%,#6C47FF 80%,#9b7dff 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 30px 80px rgba(108,71,255,.25)}
+.mock-editor{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px;width:85%;font-family:'SF Mono',Monaco,monospace;font-size:13px;color:rgba(255,255,255,.8);line-height:1.7}
+.mock-line{margin:2px 0}
+.mock-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.hero-badge{position:absolute;bottom:-16px;left:-16px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 8px 28px rgba(0,0,0,.1);display:flex;align-items:center;gap:12px}
+.badge-dot{width:10px;height:10px;border-radius:50%;background:#34c759;flex-shrink:0}
+.badge-text{font-size:13px;font-weight:500;color:var(--text)}
+.badge-count{font-size:11px;color:var(--text-2)}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:60px}
+.section-head h2{font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:16px}
+.section-head p{font-size:19px;color:var(--text-2);max-width:520px;margin:0 auto}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{background:var(--surface);border-radius:var(--r-card);padding:40px 32px;transition:transform .25s,box-shadow .25s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.07)}
+.feat-icon{font-size:28px;margin-bottom:20px}
+.feature-card h3{font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.feature-card p{font-size:16px;color:var(--text-2);line-height:1.65}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,#1a0533,#3d1f7a 50%,#6C47FF);text-align:center;padding:100px 24px}
+.cta-band h2{font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.025em;color:#fff;margin-bottom:16px}
+.cta-band p{font-size:19px;color:rgba(255,255,255,.7);max-width:480px;margin:0 auto 40px}
+.cta-band .btn-primary{background:#fff;color:var(--accent);font-weight:600}
+.cta-band .btn-primary:hover{background:#f5f5f7}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 24px}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.footer-logo span{color:var(--accent)}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:14px;color:var(--text-2);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:13px;color:var(--text-2);width:100%;text-align:center;padding-top:20px;border-top:1px solid var(--border);margin-top:8px}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-visual{order:-1}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .hero{padding:60px 20px}
+  section{padding:72px 20px}
+  .nav-links{display:none}
+  .features-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+  .hero-badge{bottom:-8px;left:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Quill<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#cta" class="btn-nav">Join Waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow fade-in">Now accepting early access</span>
+      <h1 class="fade-in delay-1">Investor updates,<br>10× faster.</h1>
+      <p class="fade-in delay-2">Quill uses AI to draft your investor updates from your metrics and notes — in your voice, in minutes. One click to send.</p>
+      <div class="fade-in delay-3">
+        <form class="waitlist-form" onsubmit="handleSubmit(event)">
+          <input type="email" placeholder="your@email.com" id="email-input" required />
+          <button type="submit">Join Waitlist</button>
+        </form>
+        <p style="font-size:13px;color:var(--text-2);margin-top:12px">✦ 340+ founders already on the list</p>
+      </div>
+    </div>
+    <div class="hero-visual fade-in delay-2">
+      <div class="hero-img">
+        <div class="mock-editor">
+          <div class="mock-label">✦ Quill is drafting your update…</div>
+          <div class="mock-line">Dear investors,</div>
+          <div class="mock-line"> </div>
+          <div class="mock-line">This month we hit <span style="color:#b39dff">$42k MRR</span>, up</div>
+          <div class="mock-line">from $31k — a <span style="color:#b39dff">35% increase</span>.</div>
+          <div class="mock-line"> </div>
+          <div class="mock-line">Key highlights:</div>
+          <div class="mock-line">• Launched enterprise tier</div>
+          <div class="mock-line">• Closed 3 new design partners</div>
+          <div class="mock-line">• Hired VP of Engineering</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <div>
+          <div class="badge-text">AI generation complete</div>
+          <div class="badge-count">4.2 seconds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="background:var(--surface)">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow fade-in">Built for founders</span>
+      <h2 class="fade-in">Everything you need,<br>nothing you don't.</h2>
+      <p class="fade-in">Three powerful features that turn your raw data into polished investor communication.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feat-icon">⚡</div>
+        <h3>Auto-generates from your data</h3>
+        <p>Connect your metrics dashboard, paste your notes, or use our templates. Quill synthesizes everything into a narrative your investors will love.</p>
+      </div>
+      <div class="feature-card fade-in delay-1">
+        <div class="feat-icon">🧠</div>
+        <h3>Learns your writing style</h3>
+        <p>The more you use Quill, the more it sounds like you. It picks up your tone, structure, and vocabulary — no robotic AI-speak.</p>
+      </div>
+      <div class="feature-card fade-in delay-2">
+        <div class="feat-icon">📬</div>
+        <h3>One-click send to your list</h3>
+        <p>Maintain your investor list in Quill. When you're happy with the update, hit send — delivered beautifully to every inbox on your list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="cta-band">
+  <div class="section-inner">
+    <h2 class="fade-in">Your investors deserve better updates.<br>So do you.</h2>
+    <p class="fade-in">Join the waitlist and get early access when we launch. First 100 founders get lifetime Pro access.</p>
+    <div class="fade-in delay-1">
+      <form class="waitlist-form" style="justify-content:center;max-width:460px;margin:0 auto" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="your@email.com" id="email-input-2" required style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.2);color:#fff" />
+        <button type="submit" style="background:#fff;color:var(--accent);font-weight:600">Join Waitlist</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Quill<span>.</span></a>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <p class="footer-copy">© 2026 Quill. All rights reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✓ You\'re on the list!';
+  btn.style.background = '#34c759';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>

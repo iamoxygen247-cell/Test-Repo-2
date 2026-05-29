@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "html_file_created",
+      "passed": true,
+      "evidence": "File size: 40033 bytes"
+    },
+    {
+      "text": "clarifying_questions_documented",
+      "passed": true,
+      "evidence": "questions_asked.md found"
+    },
+    {
+      "text": "discovery_call_cta_present",
+      "passed": true,
+      "evidence": "Discovery call CTA found"
+    },
+    {
+      "text": "has_sticky_nav",
+      "passed": true,
+      "evidence": "position:sticky found"
+    },
+    {
+      "text": "has_scroll_animations",
+      "passed": true,
+      "evidence": "IntersectionObserver/fade-in found"
+    },
+    {
+      "text": "has_responsive_breakpoints",
+      "passed": true,
+      "evidence": "@media queries found"
+    },
+    {
+      "text": "is_self_contained",
+      "passed": true,
+      "evidence": "No external CDN scripts"
+    },
+    {
+      "text": "minimal_design_signals",
+      "passed": true,
+      "evidence": "Apple system font stack found"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "pass_rate": 1.0
+  }
+}

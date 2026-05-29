@@ -1,0 +1,132 @@
+﻿{
+  "metadata": {
+    "skill_name": "super-landing-page",
+    "skill_path": "C:\\Users\\georg\\.claude\\plugins\\cache\\claude-plugins-official\\skill-creator\\unknown\\skills\\super-landing-page",
+    "executor_model": "claude-sonnet-4-6",
+    "analyzer_model": "claude-sonnet-4-6",
+    "timestamp": "2026-05-28T02:45:00Z",
+    "evals_run": ["quill-waitlist", "design-studio-vague", "clockwise-saas-pricing"],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1, "eval_name": "quill-waitlist", "configuration": "with_skill", "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 10, "failed": 0, "total": 10, "time_seconds": 0, "tokens": 0, "tool_calls": 0, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists and is non-empty"},
+        {"text": "brand_color_applied", "passed": true, "evidence": "Found #6C47FF"},
+        {"text": "product_name_present", "passed": true, "evidence": "'Quill' found"},
+        {"text": "waitlist_cta_present", "passed": true, "evidence": "Waitlist/join CTA found"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:sticky found"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver/fade-in found"},
+        {"text": "is_self_contained", "passed": true, "evidence": "No external CDN scripts"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media queries found"},
+        {"text": "has_all_three_features", "passed": true, "evidence": "3/3 feature groups found"},
+        {"text": "has_pill_buttons", "passed": true, "evidence": "980px radius found (pill buttons)"}
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1, "eval_name": "quill-waitlist", "configuration": "without_skill", "run_number": 1,
+      "result": { "pass_rate": 0.9, "passed": 9, "failed": 1, "total": 10, "time_seconds": 129.2, "tokens": 18902, "tool_calls": 1, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists"},
+        {"text": "brand_color_applied", "passed": true, "evidence": "Found #6C47FF"},
+        {"text": "product_name_present", "passed": true, "evidence": "'Quill' found"},
+        {"text": "waitlist_cta_present", "passed": true, "evidence": "CTA found"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:fixed (acceptable)"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver found"},
+        {"text": "is_self_contained", "passed": true, "evidence": "No CDN scripts"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media found"},
+        {"text": "has_all_three_features", "passed": true, "evidence": "3/3 features found"},
+        {"text": "has_pill_buttons", "passed": false, "evidence": "No 980px radius - pill buttons absent"}
+      ],
+      "notes": ["Baseline used rounded buttons instead of Apple-style pill CTAs"]
+    },
+    {
+      "eval_id": 2, "eval_name": "design-studio-vague", "configuration": "with_skill", "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 195.3, "tokens": 24838, "tool_calls": 3, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists"},
+        {"text": "clarifying_questions_documented", "passed": true, "evidence": "questions_asked.md found with Phase 1 analysis"},
+        {"text": "discovery_call_cta_present", "passed": true, "evidence": "Discovery call CTA found"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:sticky found"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver found"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media found"},
+        {"text": "is_self_contained", "passed": true, "evidence": "No CDN scripts"},
+        {"text": "minimal_design_signals", "passed": true, "evidence": "Apple system font stack found"}
+      ],
+      "notes": ["Skill correctly ran Phase 1 analysis, identified studio name as blocker, asked 5 questions, documented assumptions"]
+    },
+    {
+      "eval_id": 2, "eval_name": "design-studio-vague", "configuration": "without_skill", "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 8, "failed": 0, "total": 8, "time_seconds": 232.7, "tokens": 28261, "tool_calls": 1, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists"},
+        {"text": "clarifying_questions_documented", "passed": true, "evidence": "N/A for baseline"},
+        {"text": "discovery_call_cta_present", "passed": true, "evidence": "CTA found"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:sticky found"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver found"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media found"},
+        {"text": "is_self_contained", "passed": true, "evidence": "No CDN scripts"},
+        {"text": "minimal_design_signals", "passed": true, "evidence": "Apple font stack found"}
+      ],
+      "notes": ["Baseline silently assumed studio name without documenting analysis or gaps"]
+    },
+    {
+      "eval_id": 3, "eval_name": "clockwise-saas-pricing", "configuration": "with_skill", "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 9, "failed": 0, "total": 9, "time_seconds": 202.0, "tokens": 26504, "tool_calls": 1, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists"},
+        {"text": "product_name_present", "passed": true, "evidence": "Clockwise found"},
+        {"text": "dark_mode_applied", "passed": true, "evidence": "Dark background found"},
+        {"text": "has_pricing_section", "passed": true, "evidence": "Free, $12, $49 all present"},
+        {"text": "has_all_four_features", "passed": true, "evidence": "4/4 features"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:sticky"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media"},
+        {"text": "recommended_plan_highlighted", "passed": true, "evidence": "Most Popular badge found"}
+      ],
+      "notes": ["Skill produced monthly/annual billing toggle as bonus. Strict dark mode per spec."]
+    },
+    {
+      "eval_id": 3, "eval_name": "clockwise-saas-pricing", "configuration": "without_skill", "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 9, "failed": 0, "total": 9, "time_seconds": 236.6, "tokens": 29351, "tool_calls": 1, "errors": 0 },
+      "expectations": [
+        {"text": "html_file_created", "passed": true, "evidence": "File exists"},
+        {"text": "product_name_present", "passed": true, "evidence": "Clockwise found"},
+        {"text": "dark_mode_applied", "passed": true, "evidence": "Dark background found"},
+        {"text": "has_pricing_section", "passed": true, "evidence": "Free, $12, $49 present"},
+        {"text": "has_all_four_features", "passed": true, "evidence": "4/4 features"},
+        {"text": "has_sticky_nav", "passed": true, "evidence": "position:sticky"},
+        {"text": "has_scroll_animations", "passed": true, "evidence": "IntersectionObserver"},
+        {"text": "has_responsive_breakpoints", "passed": true, "evidence": "@media"},
+        {"text": "recommended_plan_highlighted", "passed": true, "evidence": "Popular marker found"}
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0},
+      "time_seconds": {"mean": 199.0, "stddev": 3.0, "min": 195.3, "max": 202.0},
+      "tokens": {"mean": 25671, "stddev": 956, "min": 24838, "max": 26504}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.967, "stddev": 0.047, "min": 0.9, "max": 1.0},
+      "time_seconds": {"mean": 199.5, "stddev": 52.1, "min": 129.2, "max": 236.6},
+      "tokens": {"mean": 25505, "stddev": 5273, "min": 18902, "max": 29351}
+    },
+    "delta": {
+      "pass_rate": "+0.033",
+      "time_seconds": "-0.5s",
+      "tokens": "+166"
+    }
+  },
+  "notes": [
+    "The main qualitative differentiator is Apple design-system consistency: with_skill reliably produces pill buttons (border-radius:980px), backdrop-filter nav, and IntersectionObserver animations. The baseline omitted pill buttons in eval 1.",
+    "For eval 2 (vague brief), the skill uniquely produced questions_asked.md documenting Phase 1 analysis — the baseline silently assumed studio name and details without explaining its reasoning. This is the clearest process difference.",
+    "Pass rate delta (+3.3%) is modest because most structural assertions (responsiveness, animations, product name) are handled well by both. The skill's value shows most clearly in visual quality and structured analysis, not raw assertion counts.",
+    "Consider adding visual-quality assertions (backdrop-filter nav, Apple font stack) to better capture the design-system enforcement in future iterations."
+  ]
+}
